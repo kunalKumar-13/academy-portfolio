@@ -4,124 +4,136 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kunal Kumar</title>
-<meta name="description" content="Kunal Kumar: AI safety research at MATS, 1,500 students reached with Hack Club, 29 patches merged upstream, and five shipped projects.">
+<meta name="description" content="Kunal Kumar — AI safety at MATS, 1,500 students reached with Hack Club, 29 patches merged upstream, five shipped projects.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@10..48,75..100,400..800&family=JetBrains+Mono:wght@400;600;700&family=Literata:opsz,wght@7..72,300..600&display=swap">
 <style>
 :root{
-  --paper:#FEFBF4; --card:#FFFFFF; --ink:#12161D; --ink-2:#3F4854; --ink-3:#79828E;
-  --rule:#E4E0D6;
-  --green:#10836F; --blue:#3566B5; --ochre:#C07818; --plum:#A8457B; --teal:#1C8A99;
+  --paper:#FFFCF5; --card:#FFFFFF; --ink:#12161D; --ink-2:#3F4854; --ink-3:#79828E;
+  --rule:#EAE4D6;
+  --green:#10836F; --blue:#3566B5; --ochre:#D2860F; --plum:#B44A84; --teal:#1C8A99;
   --display:"Bricolage Grotesque","Helvetica Neue",sans-serif;
   --body:"Literata",Georgia,serif;
   --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --tape:rgba(214,198,150,.55);
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --paper:#12151A; --card:#191D25; --ink:#EDEAE3; --ink-2:#AEB5BF; --ink-3:#7C8591;
-  --rule:#2A303A; --green:#4FC2AA; --blue:#7AA6EA; --ochre:#E0A052; --plum:#D983AF; --teal:#5CBECB;
+  --paper:#11141A; --card:#181C24; --ink:#EFECE4; --ink-2:#B0B7C1; --ink-3:#7E8793;
+  --rule:#2A303A; --green:#4FC2AA; --blue:#7FA9EC; --ochre:#E8AC57; --plum:#E08CBB; --teal:#5CBECB;
+  --tape:rgba(120,105,70,.5);
 }}
 :root[data-theme="dark"]{
-  --paper:#12151A; --card:#191D25; --ink:#EDEAE3; --ink-2:#AEB5BF; --ink-3:#7C8591;
-  --rule:#2A303A; --green:#4FC2AA; --blue:#7AA6EA; --ochre:#E0A052; --plum:#D983AF; --teal:#5CBECB;
+  --paper:#11141A; --card:#181C24; --ink:#EFECE4; --ink-2:#B0B7C1; --ink-3:#7E8793;
+  --rule:#2A303A; --green:#4FC2AA; --blue:#7FA9EC; --ochre:#E8AC57; --plum:#E08CBB; --teal:#5CBECB;
+  --tape:rgba(120,105,70,.5);
 }
 *{box-sizing:border-box}
 body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;
-  line-height:1.6;margin:0;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
-a{color:var(--green);text-decoration:none;border-bottom:1.5px solid color-mix(in srgb,var(--green) 30%,transparent)}
+  line-height:1.6;margin:0;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,52px)}
+a{color:var(--green);text-decoration:none;border-bottom:1.5px solid color-mix(in srgb,var(--green) 32%,transparent)}
 a:hover{border-bottom-color:var(--green)}
 a:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:3px}
-h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.03em;line-height:1.05;margin:0}
-.mono{font-family:var(--mono)}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;line-height:1.03;margin:0;font-weight:800}
 
-/* hero */
-.hero{padding:clamp(40px,5vw,64px) 0 clamp(28px,4vw,44px)}
-.kicker{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:9px;margin-bottom:22px}
+/* ── hero ── */
+.hero{padding:clamp(38px,5vw,60px) 0 clamp(22px,3vw,34px)}
+.kicker{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:9px;margin-bottom:20px}
 .kicker::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--green)}
-.hero h1{font-size:clamp(40px,6vw,68px);font-weight:800;margin-bottom:18px;letter-spacing:-.035em}
-.hero .lede{font-size:clamp(17px,2vw,20px);max-width:34ch;color:var(--ink-2);line-height:1.4}
+.hero h1{font-size:clamp(38px,6vw,66px);margin-bottom:16px}
+.hero .lede{font-size:clamp(17px,1.9vw,20px);color:var(--ink-2);max-width:36ch;line-height:1.42}
 .hero .lede b{color:var(--ink);font-weight:600}
-.herogrid{display:grid;gap:clamp(28px,4vw,56px);grid-template-columns:1fr}
-@media(min-width:860px){.herogrid{grid-template-columns:1.15fr 1fr;align-items:end}}
-.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.hg{display:grid;gap:clamp(24px,4vw,52px);grid-template-columns:1fr}
+@media(min-width:880px){.hg{grid-template-columns:1.12fr 1fr;align-items:end}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
 .chip{font-family:var(--mono);font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:30px;
-  background:var(--card);border:1.5px solid var(--rule);color:var(--ink-2)}
+  background:var(--card);border:1.5px solid var(--rule);color:var(--ink-2);
+  transition:transform .18s}
+.chip:hover{transform:translateY(-2px) rotate(-1deg)}
 .chip b{color:var(--c);font-weight:700}
 
-/* stat strip */
+/* ── stats ── */
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);
-  border:1px solid var(--rule);border-radius:12px;overflow:hidden;margin:clamp(30px,4vw,44px) 0}
-@media(min-width:720px){.stats{grid-template-columns:repeat(4,1fr)}}
-.stat{background:var(--card);padding:22px 20px}
-.stat .n{font-family:var(--display);font-size:clamp(30px,4.4vw,42px);font-weight:800;
-  color:var(--c);line-height:1;letter-spacing:-.04em}
+  border:1px solid var(--rule);border-radius:14px;overflow:hidden;margin:clamp(26px,3.5vw,38px) 0 0}
+@media(min-width:760px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{background:var(--card);padding:22px 20px;transition:background .2s}
+.stat:hover{background:color-mix(in srgb,var(--c) 7%,var(--card))}
+.stat .n{font-family:var(--display);font-size:clamp(32px,4.6vw,44px);font-weight:800;
+  color:var(--c);line-height:1;letter-spacing:-.045em}
 .stat .l{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;
   color:var(--ink-3);margin-top:9px;line-height:1.45}
 
-/* sections */
-section{padding:clamp(40px,6vw,76px) 0;border-top:1px solid var(--rule)}
-.shead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+/* ── photos ── */
+.photo{position:relative;display:block;background:var(--card);padding:11px 11px 0;border-radius:3px;
+  box-shadow:0 12px 30px rgba(18,22,29,.16);transform:rotate(var(--rot,-2deg));
+  transition:transform .3s ease}
+.photo:hover{transform:rotate(0) scale(1.015)}
+.photo img{display:block;width:100%;height:auto;border-radius:1px}
+.photo figcaption{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);padding:11px 2px 12px;
+  line-height:1.5}
+.photo::before{content:"";position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-1.5deg);
+  width:92px;height:24px;background:var(--tape);border-radius:1px}
+.pair{display:grid;gap:clamp(30px,5vw,60px);grid-template-columns:1fr;margin:clamp(34px,5vw,58px) 0 0}
+@media(min-width:820px){.pair{grid-template-columns:1.15fr .85fr;align-items:start}}
+
+/* ── sections ── */
+section{padding:clamp(46px,6vw,84px) 0;border-top:1px solid var(--rule)}
+.shead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
 .num{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--c)}
-.shead h2{font-size:clamp(28px,4.4vw,44px);font-weight:800}
-.sub{color:var(--ink-2);max-width:62ch;font-size:17.5px;margin:14px 0 0}
-.body-cols{display:grid;gap:clamp(22px,3.4vw,42px);grid-template-columns:1fr;margin-top:30px}
-@media(min-width:800px){.body-cols{grid-template-columns:1fr 1fr}}
-p{margin:0 0 16px}
-p:last-child{margin-bottom:0}
-strong{font-weight:600}
-.mark{background:linear-gradient(transparent 58%, color-mix(in srgb,var(--c) 28%,transparent) 58%);
+.shead h2{font-size:clamp(30px,4.6vw,46px)}
+.sub{color:var(--ink-2);max-width:56ch;font-size:18px;margin:14px 0 0}
+.mark{background:linear-gradient(transparent 56%, color-mix(in srgb,var(--c) 32%,transparent) 56%);
   padding:0 2px;font-weight:600;color:var(--ink)}
+p{margin:0 0 15px}p:last-child{margin-bottom:0}
+strong{font-weight:600}
 
-/* cards */
-.cardrow{display:grid;gap:20px;grid-template-columns:1fr;margin-top:30px}
-@media(min-width:760px){.cardrow{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1000px){.cardrow.three{grid-template-columns:repeat(3,1fr)}}
-.card{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:24px;
-  border-top:4px solid var(--c)}
-.card h3{font-size:20px;font-weight:700;margin-bottom:10px}
-.card p{font-size:15.5px;line-height:1.55;color:var(--ink-2)}
-.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;
-  font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c);margin-bottom:12px}
-.badge img{height:20px;width:auto;display:block}
-.badge img.sq{height:22px;border-radius:5px}
+/* ── cards ── */
+.row{display:grid;gap:18px;grid-template-columns:1fr;margin-top:30px}
+@media(min-width:720px){.row{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:24px;
+  border-top:5px solid var(--c);transition:transform .2s}
+.card:hover{transform:translateY(-4px)}
+.card .big{font-family:var(--display);font-size:34px;font-weight:800;color:var(--c);
+  letter-spacing:-.04em;line-height:1}
+.card h3{font-size:19px;margin:12px 0 8px}
+.card p{font-size:15px;line-height:1.5;color:var(--ink-2)}
 
-/* projects */
-.proj{display:grid;gap:clamp(22px,3vw,40px);grid-template-columns:1fr;align-items:center;
-  padding:clamp(24px,3vw,36px) 0;border-bottom:1px solid var(--rule)}
+/* ── org strip ── */
+.orgs{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);
+  border-radius:14px;overflow:hidden;margin-top:28px}
+.org{background:var(--card);display:grid;grid-template-columns:48px 1fr;gap:14px;
+  padding:13px 18px;align-items:baseline;transition:background .18s}
+.org:hover{background:color-mix(in srgb,var(--green) 6%,var(--card))}
+.org .c{font-family:var(--display);font-size:19px;font-weight:800;color:var(--green)}
+.org .n{font-family:var(--mono);font-size:13px}
+.org .d{color:var(--ink-3);font-size:14.5px}
+@media(min-width:700px){.org{grid-template-columns:48px 250px 1fr}}
+
+/* ── projects ── */
+.proj{display:grid;gap:clamp(24px,3.5vw,46px);grid-template-columns:1fr;align-items:center;
+  padding:clamp(26px,3.4vw,40px) 0;border-bottom:1px solid var(--rule)}
 .proj:last-child{border-bottom:0}
-@media(min-width:820px){
-  .proj{grid-template-columns:1fr 1.05fr}
-  .proj:nth-child(even) .shotwrap{order:-1}
-}
-.proj h3{font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:6px}
-.proj .one{font-family:var(--mono);font-size:12.5px;color:var(--c);margin-bottom:14px;
-  text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+@media(min-width:840px){.proj{grid-template-columns:.9fr 1.1fr}
+  .proj:nth-child(even) .shotwrap{order:-1}}
+.proj h3{font-size:clamp(26px,3.2vw,34px);margin-bottom:6px}
+.proj .one{font-family:var(--mono);font-size:12.5px;color:var(--c);margin-bottom:12px;
+  text-transform:uppercase;letter-spacing:.08em;font-weight:700}
 .proj p{font-size:16px;color:var(--ink-2)}
 .stack{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
 .stack span{font-family:var(--mono);font-size:11.5px;padding:4px 10px;border-radius:20px;
   background:var(--card);border:1px solid var(--rule);color:var(--ink-3)}
-.links{margin-top:16px;font-family:var(--mono);font-size:13px;display:flex;gap:16px;flex-wrap:wrap}
-.shotwrap{padding:8px}
-.shot{display:block;width:100%;border-radius:8px;border:5px solid var(--card);
-  box-shadow:0 10px 26px rgba(18,22,29,.14);transform:rotate(var(--rot,-1.5deg));
-  transition:transform .25s}
-.shot:hover{transform:rotate(0deg) scale(1.015)}
+.links{margin-top:15px;font-family:var(--mono);font-size:13px;display:flex;gap:16px;flex-wrap:wrap}
+.shotwrap{padding:10px}
+.shot{display:block;width:100%;border-radius:9px;border:6px solid var(--card);
+  box-shadow:0 12px 30px rgba(18,22,29,.15);transform:rotate(var(--rot,-1.5deg));transition:transform .28s}
+.shot:hover{transform:rotate(0) scale(1.015)}
 
-/* org list */
-.orgs{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);
-  border-radius:12px;overflow:hidden;margin-top:26px}
-.org{background:var(--card);display:grid;grid-template-columns:56px 1fr;gap:14px;
-  padding:13px 18px;align-items:baseline}
-.org .c{font-family:var(--display);font-size:19px;font-weight:800;color:var(--green)}
-.org .n{font-family:var(--mono);font-size:13px}
-.org .d{color:var(--ink-3);font-size:14px}
-@media(min-width:700px){.org{grid-template-columns:56px 260px 1fr}}
-
-footer{border-top:3px solid var(--ink);padding:40px 0 70px;margin-top:20px}
-footer .big{font-family:var(--display);font-size:clamp(26px,4vw,40px);font-weight:800;margin-bottom:18px}
-footer .row{font-family:var(--mono);font-size:14px;line-height:2;color:var(--ink-2)}
+footer{border-top:4px solid var(--ink);padding:44px 0 76px}
+footer .big{font-family:var(--display);font-size:clamp(30px,5vw,52px);font-weight:800;
+  letter-spacing:-.04em;margin-bottom:20px}
+footer .r{font-family:var(--mono);font-size:14px;line-height:2.1;color:var(--ink-2)}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -130,96 +142,82 @@ footer .row{font-family:var(--mono);font-size:14px;line-height:2;color:var(--ink
 
 <header class="hero">
   <p class="kicker">Kunal Kumar &middot; Bengaluru, India</p>
-  <div class="herogrid">
+  <div class="hg">
+    <div><h1>I build systems that refuse to invent.</h1></div>
     <div>
-      <h1>I build systems that refuse to invent.</h1>
-    </div>
-    <div>
-      <p class="lede">Computer Science, class of 2028. <b>Frontend Engineering Intern at Emergent (YC&nbsp;S24)</b>. Through to <b>round 2 at MATS</b>, working on AI safety.</p>
+      <p class="lede">CS, class of 2028. <b>Frontend Engineering Intern at Emergent (YC&nbsp;S24)</b>. Through to <b>round 2 at MATS</b>, working on AI safety.</p>
       <div class="chips">
         <span class="chip" style="--c:var(--plum)"><b>MATS</b> round 2</span>
-        <span class="chip" style="--c:var(--green)"><b>Activate AI Fellow</b> &middot; 1 of 15 from 500+</span>
+        <span class="chip" style="--c:var(--green)"><b>Activate AI Fellow</b></span>
         <span class="chip" style="--c:var(--ochre)"><b>HPAIR 2026</b>, Harvard</span>
-        <span class="chip" style="--c:var(--blue)"><b>1,500</b> students reached</span>
+        <span class="chip" style="--c:var(--blue)"><b>Hack Club</b> Growth &amp; Ops Lead</span>
       </div>
     </div>
   </div>
-
   <div class="stats">
-    <div class="stat" style="--c:var(--blue)"><div class="n">1,500</div><div class="l">students reached<br>Hack Club</div></div>
+    <div class="stat" style="--c:var(--blue)"><div class="n">1,500</div><div class="l">students reached</div></div>
     <div class="stat" style="--c:var(--green)"><div class="n">29</div><div class="l">patches merged<br>into 35 projects</div></div>
     <div class="stat" style="--c:var(--ochre)"><div class="n">829</div><div class="l">contributions<br>last 12 months</div></div>
-    <div class="stat" style="--c:var(--teal)"><div class="n">32</div><div class="l">repositories<br>built and shipped</div></div>
+    <div class="stat" style="--c:var(--teal)"><div class="n">32</div><div class="l">things built<br>and shipped</div></div>
   </div>
 </header>
 
-<section style="--c:var(--plum)">
-  <div class="shead"><span class="num">01</span><h2>What I am chasing</h2></div>
-  <p class="sub">One question sits under everything I build: <strong>when a capable model proposes something, what is allowed to believe it?</strong></p>
-  <div class="body-cols">
-    <div>
-      <p>Not &ldquo;is the model accurate&rdquo;. Accuracy is measured afterwards. What decides whether a system is safe to deploy is <span class="mark">structural</span>: what the model is architecturally permitted to cause.</p>
-      <p>I am through to <strong>round 2 at MATS</strong>, and I was selected as an <strong>Activate AI Fellow</strong>, India's first cohort, one of 15 from over 500 applicants. I read alignment work the way other people read the news.</p>
-    </div>
-    <div>
-      <p>Three of the things I had already built turned out to be about exactly this, and I only noticed afterwards.</p>
-      <p><strong>ATTEST</strong> gives its advisor names and dates but never an amount. <strong>Support Triage</strong> lets the model speak once, inside a sealed block, and a policy validator decides. <strong>Watershed</strong> is the other half of the question: trained over 100k self-play episodes, the agents stopped competing and <span class="mark">alliances formed</span> on their own.</p>
-    </div>
-  </div>
-  <div class="cardrow three">
-    <div class="card" style="--c:var(--green)"><h3>ATTEST</h3><p>&#8377;0.00 moved against the wrong account across 500 held-out settlements. 82.4% correctly refused.</p></div>
-    <div class="card" style="--c:var(--ochre)"><h3>Support Triage</h3><p>132 of 132 evaluation tests pass. Two runs on the same input hash identically.</p></div>
-    <div class="card" style="--c:var(--plum)"><h3>Watershed</h3><p>GRPO over 100k+ self-play episodes with trust and coalition dynamics in the reward.</p></div>
-  </div>
-</section>
-
 <section style="--c:var(--blue)">
-  <div class="shead"><span class="num">02</span><h2>Social impact</h2></div>
-  <p class="sub">Before any of the AI work, two years of making things happen for other people.</p>
-  <div class="body-cols">
+  <div class="shead"><span class="num">01</span><h2>Rooms I filled</h2></div>
+  <p class="sub">Sixteen months as Growth &amp; Ops Lead at <strong>Hack Club</strong>, running the technical infrastructure and logistics behind Campfire, Daydream and CodeDay Bengaluru.</p>
+  <div class="pair">
+    <figure class="photo" style="--rot:-1.8deg">
+      <img src="img/workshop.jpg" alt="A packed session room of students at one of the events">
+      <figcaption>One room, one session. Multiply this by sixteen months.</figcaption>
+    </figure>
     <div>
-      <p class="badge" style="--c:var(--blue)"><img src="img/hackclub.svg" alt="Hack Club"> Growth &amp; Ops Lead &middot; 16 months</p>
-      <p>At <strong>Hack Club</strong> I ran regional technical infrastructure and operational logistics for Campfire, Daydream and CodeDay Bengaluru, reaching <span class="mark">1,500 students</span>.</p>
-      <p>&ldquo;Growth and Ops&rdquo; is a generous title for the work. At a large event nobody remembers the talks. They remember whether the wifi held, whether there was food at 11pm, and whether the person who turned up alone found somebody to build with.</p>
-      <p>At that scale every failure is one you did not plan for. So you stop trying to prevent failure and start designing the degradation: what still works, and who finds out first. <strong>Every system in my portfolio has a documented failure mode, and that habit came from a wifi outage rather than a textbook.</strong></p>
+      <p>Nobody remembers the talks. They remember whether the wifi held, whether there was food at 11pm, and whether the person who turned up alone found somebody to build with.</p>
+      <p>At this scale <span class="mark">every failure is one you did not plan for.</span> So you stop trying to prevent failure and start designing the degradation: what still works, and who finds out first.</p>
+      <p><strong>Every system I have built since has a documented failure mode. That habit came from a wifi outage, not a textbook.</strong></p>
     </div>
-    <div>
-      <p class="badge" style="--c:var(--teal)">Teaching Assistant &middot; 50+ students</p>
-      <p>A semester of Data Structures and Algorithms, in doubt-resolution and concept-clarification sessions.</p>
-      <p>The first explanation is the one you already have. The second is the one you prepared. <span class="mark">The third is the one you build live, out of whatever the student just told you they do understand</span>, and it is the only one that ever works.</p>
-      <p>It changed how I write. Every README I ship opens by naming what the software does <em>not</em> do, because people can only hold a new idea once they know its edges.</p>
-      <p>Today I am <strong>Operations Lead</strong> of the Open Source Club and <strong>Head of Immersions</strong> for Aspirants Relations.</p>
-    </div>
+  </div>
+  <div class="pair" style="grid-template-columns:1fr">
+    <figure class="photo" style="--rot:1.4deg;max-width:660px">
+      <img src="img/team.jpg" alt="The organising team at one of the events">
+      <figcaption>The crew. This is the part of the job that does not appear in a commit graph.</figcaption>
+    </figure>
+  </div>
+  <div class="row">
+    <div class="card" style="--c:var(--blue)"><div class="big">1,500</div><h3>Students reached</h3><p>Across Campfire, Daydream and CodeDay Bengaluru.</p></div>
+    <div class="card" style="--c:var(--teal)"><div class="big">50+</div><h3>Students taught</h3><p>Teaching Assistant for Data Structures and Algorithms.</p></div>
+    <div class="card" style="--c:var(--plum)"><div class="big">2</div><h3>Roles, right now</h3><p>Ops Lead, Open Source Club. Head of Immersions, Aspirants Relations.</p></div>
   </div>
 </section>
 
 <section style="--c:var(--ochre)">
-  <div class="shead"><span class="num">03</span><h2>Rooms I do not belong in</h2></div>
-  <div class="body-cols">
+  <div class="shead"><span class="num">02</span><h2>The letter</h2></div>
+  <p class="sub">Selected as a delegate to the <strong>2026 HPAIR Asia Conference</strong> at Harvard, from hundreds of written applications and interviews. The theme was <em>Rising with Resolve</em>.</p>
+  <div class="pair">
+    <figure class="photo" style="--rot:1.6deg">
+      <img src="img/hpair-letter.jpg" alt="HPAIR acceptance letter addressed to Kunal Kumar">
+      <figcaption>Harvard College Project for Asian and International Relations &middot; Office of the Presidents &amp; Executive Board</figcaption>
+    </figure>
     <div>
-      <p class="badge" style="--c:var(--ochre)"><img class="sq" src="img/hpair.png" alt="HPAIR"> Selected delegate &middot; 2026</p>
-      <p>The <strong>Harvard Project for Asian and International Relations</strong> put me in rooms with people from completely unrelated fields, arguing about things I had no technical claim on.</p>
-    </div>
-    <div>
+      <p>It put me in rooms with people from completely unrelated fields, arguing about things I had no technical claim on.</p>
       <p>Every project I have built started as a problem I could name in one sentence: a lump sum that cannot be decomposed, a train of thought you cannot get back, a July where everything lived in working memory and the result was fog.</p>
       <p><span class="mark">I am fairly sure that habit came from that room rather than from any codebase.</span></p>
     </div>
   </div>
 </section>
 
+<section style="--c:var(--plum)">
+  <div class="shead"><span class="num">03</span><h2>What I am chasing</h2></div>
+  <p class="sub">One question sits under everything I build: <strong>when a capable model proposes something, what is allowed to believe it?</strong></p>
+  <div class="row">
+    <div class="card" style="--c:var(--plum)"><div class="big">MATS</div><h3>Round 2</h3><p>AI safety. Accuracy is measured afterwards; what makes a system safe is structural.</p></div>
+    <div class="card" style="--c:var(--green)"><div class="big">1 of 15</div><h3>Activate AI Fellow</h3><p>India's first cohort, from over 500 applicants.</p></div>
+    <div class="card" style="--c:var(--ochre)"><div class="big">&#8377;0.00</div><h3>Wrongly posted</h3><p>ATTEST, across 500 settlements it had never seen. 82.4% correctly refused.</p></div>
+  </div>
+</section>
+
 <section style="--c:var(--green)">
   <div class="shead"><span class="num">04</span><h2>Strangers grade my code</h2></div>
-  <p class="sub">The only work I could not grade in my own favour. <strong>29 patches merged into 35 repositories, with 12 approvals from 10 different maintainers across 7 organisations.</strong></p>
-  <div class="body-cols">
-    <div>
-      <p>I spread deliberately across ecosystems that share nothing: a children's music environment, a Bitcoin Lightning wallet, the OpenStreetMap editor, Django's own website, scientific data QC, and the Fortran standard library. Four languages, six review cultures.</p>
-      <p>Almost none of it is features. It is a widget that could deadlock, an error contract that broke its own promise, a hand-rolled parser, and a licensing trap for mapmakers. <span class="mark">This is maintenance work, and it is what decides whether software still runs in five years.</span></p>
-    </div>
-    <div>
-      <p><strong>Fortran is the one I would point at.</strong> I had no reason to know it. Numerical scientists maintain <code>stdlib</code> to a standard where every patch is read very carefully, and my instincts from JavaScript were worth nothing there. Landing something meant learning how that community argues about correctness before writing a line.</p>
-      <p>That is the skill I was really practising: arriving somewhere I have no standing and becoming useful anyway.</p>
-    </div>
-  </div>
+  <p class="sub">The only work I could not grade in my own favour. <strong>29 patches merged, 10 maintainers, four languages.</strong></p>
   <div class="orgs">
     <div class="org"><span class="c">8</span><span class="n">sugarlabs/musicblocks</span><span class="d">A music-and-programming microworld for children</span></div>
     <div class="org"><span class="c">3</span><span class="n">django/djangoproject.com</span><span class="d">The site Django itself runs on</span></div>
@@ -228,8 +226,9 @@ footer .row{font-family:var(--mono);font-size:14px;line-height:2;color:var(--ink
     <div class="org"><span class="c">2</span><span class="n">ZeusLN/zeus</span><span class="d">A Bitcoin Lightning wallet</span></div>
     <div class="org"><span class="c">1</span><span class="n">fortran-lang/stdlib</span><span class="d">The Fortran standard library</span></div>
     <div class="org"><span class="c">1</span><span class="n">openstreetmap/iD</span><span class="d">The OpenStreetMap editor</span></div>
-    <div class="org"><span class="c">+5</span><span class="n">plone/meta, versioncheck&hellip;</span><span class="d">And three smaller repositories</span></div>
+    <div class="org"><span class="c">+5</span><span class="n">plone, fortran-lang&hellip;</span><span class="d">And three smaller repositories</span></div>
   </div>
+  <p class="sub" style="margin-top:24px"><strong>Fortran is the one I would point at.</strong> I had no reason to know it. Landing a patch meant learning how numerical scientists argue about correctness before writing a line. <span class="mark">That is the skill: arriving somewhere I have no standing and becoming useful anyway.</span></p>
 </section>
 
 <section style="--c:var(--teal)">
@@ -237,64 +236,54 @@ footer .row{font-family:var(--mono);font-size:14px;line-height:2;color:var(--ink
   <p class="sub">Five projects, one idea, arrived at five separate times before I noticed it had become a thesis.</p>
 
   <div class="proj" style="--c:var(--blue)">
-    <div>
-      <h3>Recall</h3><p class="one">A memory engine for unfinished work</p>
-      <p>You do not lose files. You lose continuity. Press Ctrl + Space, type half a thought, and the moment, the session and the topic all come back at once. No model in the production path, so the same question can never return two different pasts.</p>
+    <div><h3>Recall</h3><p class="one">A memory engine for unfinished work</p>
+      <p>You do not lose files. You lose continuity. One keystroke brings back the moment, the session and the topic at once. No model in the production path, so the same question can never return two different pasts.</p>
       <div class="stack"><span>Python</span><span>PyQt6</span><span>FastAPI</span><span>ChromaDB</span><span>Tauri</span></div>
-      <div class="links"><a href="https://web-seven-puce-99.vercel.app/">Live &#8599;</a><a href="https://github.com/kunalKumar-13/Recall-me">Code &#8599;</a><a href="https://docs.recall.computer">Docs &#8599;</a></div>
-    </div>
+      <div class="links"><a href="https://web-seven-puce-99.vercel.app/">Live &#8599;</a><a href="https://github.com/kunalKumar-13/Recall-me">Code &#8599;</a><a href="https://docs.recall.computer">Docs &#8599;</a></div></div>
     <div class="shotwrap"><img class="shot" style="--rot:-1.6deg" src="img/recall-live.jpg" alt="Recall"></div>
   </div>
 
   <div class="proj" style="--c:var(--green)">
-    <div>
-      <h3>ATTEST</h3><p class="one">Money that moves only on proof</p>
-      <p>More than one set of orders can add up to the same credit exactly, and those sets discharge different customers. So ATTEST refuses: 82.4% of settlements correctly held, and &#8377;0.00 moved against the wrong account.</p>
+    <div><h3>ATTEST</h3><p class="one">Money that moves only on proof</p>
+      <p>More than one set of orders can add up to the same credit exactly, and those sets discharge different customers. So it refuses: &#8377;0.00 moved against the wrong account.</p>
       <div class="stack"><span>Python</span><span>Rust solver kernel</span></div>
-      <div class="links"><a href="https://github.com/kunalKumar-13/attest">Code &#8599;</a></div>
-    </div>
+      <div class="links"><a href="https://github.com/kunalKumar-13/attest">Code &#8599;</a></div></div>
     <div class="shotwrap"><img class="shot" style="--rot:1.5deg" src="img/attest-control.jpg" alt="ATTEST"></div>
   </div>
 
   <div class="proj" style="--c:var(--plum)">
-    <div>
-      <h3>Minutes</h3><p class="one">A meeting workspace, rebuilt</p>
-      <p>A meeting product is not its landing page. It is what happens on the fourth day, when you half-remember a commitment and need to find it. Everything except the speech-to-text actually works, and the README says so before a reviewer can discover it.</p>
+    <div><h3>Minutes</h3><p class="one">A meeting workspace, rebuilt</p>
+      <p>A meeting product is not its landing page. It is what happens on the fourth day, when you half-remember a commitment and need to find it.</p>
       <div class="stack"><span>Next.js 15</span><span>React 19</span><span>TypeScript</span><span>FastAPI</span><span>SQLite FTS5</span></div>
-      <div class="links"><a href="https://github.com/kunalKumar-13/minutes">Code &#8599;</a></div>
-    </div>
+      <div class="links"><a href="https://github.com/kunalKumar-13/minutes">Code &#8599;</a></div></div>
     <div class="shotwrap"><img class="shot" style="--rot:-1.2deg" src="img/minutes-meeting.jpg" alt="Minutes"></div>
   </div>
 
   <div class="proj" style="--c:var(--teal)">
-    <div>
-      <h3>PDFChat</h3><p class="one">Cites its pages, or refuses</p>
-      <p>A confident wrong answer costs more than no answer. Every response either cites the pages it came from or refuses clearly, and it answers in your language while still treating the document as the sole evidence.</p>
-      <div class="stack"><span>Python</span><span>PyMuPDF</span><span>TF-IDF retrieval</span><span>FastAPI</span></div>
-      <div class="links"><a href="https://pdf-reviewer-ten.vercel.app/">Live &#8599;</a><a href="https://github.com/kunalKumar-13/PDF-Reviewer">Code &#8599;</a></div>
-    </div>
+    <div><h3>PDFChat</h3><p class="one">Cites its pages, or refuses</p>
+      <p>A confident wrong answer costs more than no answer. Every response either cites the pages it came from or says plainly that the document does not support the question.</p>
+      <div class="stack"><span>Python</span><span>PyMuPDF</span><span>TF-IDF</span><span>FastAPI</span></div>
+      <div class="links"><a href="https://pdf-reviewer-ten.vercel.app/">Live &#8599;</a><a href="https://github.com/kunalKumar-13/PDF-Reviewer">Code &#8599;</a></div></div>
     <div class="shotwrap"><img class="shot" style="--rot:1.8deg" src="img/pdfchat.jpg" alt="PDFChat"></div>
   </div>
 
   <div class="proj" style="--c:var(--ochre)">
-    <div>
-      <h3>My portfolio site</h3><p class="one">Hand-written, no framework, no build step</p>
-      <p>One HTML file, one script, a command palette, live GitHub and clock feeds, and real deployment screenshots captured at 1280&times;800. No mockups anywhere on it.</p>
+    <div><h3>My portfolio site</h3><p class="one">Hand-written, no framework, no build step</p>
+      <p>One HTML file, one script, a command palette, live GitHub and clock feeds, and real deployment screenshots. No mockups anywhere on it.</p>
       <div class="stack"><span>HTML</span><span>CSS</span><span>Vanilla JS</span></div>
-      <div class="links"><a href="https://portfolio-wheat-seven-ojx94tfxx1.vercel.app/">Live &#8599;</a></div>
-    </div>
+      <div class="links"><a href="https://portfolio-wheat-seven-ojx94tfxx1.vercel.app/">Live &#8599;</a></div></div>
     <div class="shotwrap"><img class="shot" style="--rot:-2deg" src="img/site.jpg" alt="Portfolio site"></div>
   </div>
 </section>
 
 <footer>
   <p class="big">Let's build something.</p>
-  <div class="row">
+  <div class="r">
     <a href="mailto:kunalsain0324@gmail.com">kunalsain0324@gmail.com</a> &middot; +91 85448 88032<br>
     <a href="https://github.com/kunalKumar-13">github.com/kunalKumar-13</a> &middot;
     <a href="https://www.linkedin.com/in/sainkunal">linkedin.com/in/sainkunal</a><br>
     <a href="../KunalKumar_Portfolio_Academy2027.pdf">Portfolio PDF &#8599;</a> &middot;
-    <a href="../">Five projects, in full &#8599;</a>
+    <a href="../">The five projects, in full &#8599;</a>
   </div>
 </footer>
 
