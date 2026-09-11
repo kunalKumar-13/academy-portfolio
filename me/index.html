@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@10..48,75..100,400..800&family=JetBrains+Mono:wght@400;600;700&family=Literata:opsz,wght@7..72,300..600&display=swap">
 <style>
 :root{
-  --paper:#FFFCF5; --card:#FFFFFF; --ink:#12161D; --ink-2:#3F4854; --ink-3:#79828E;
+  --paper:#F2F1ED; --card:#FFFFFF; --ink:#12161D; --ink-2:#3F4854; --ink-3:#79828E;
   --rule:#EAE4D6;
   --green:#10836F; --blue:#3566B5; --ochre:#D2860F; --plum:#B44A84; --teal:#1C8A99;
   --display:"Bricolage Grotesque","Helvetica Neue",sans-serif;
@@ -81,11 +81,10 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;line-height:1.03;marg
 
 /* ── sections ── */
 section{padding:clamp(46px,6vw,84px) 0;border-top:1px solid var(--rule);
-  background:color-mix(in srgb,var(--c) 11%,transparent);
-  box-shadow:0 0 0 100vmax color-mix(in srgb,var(--c) 11%,transparent);
+  background:color-mix(in srgb,var(--c) 5%,transparent);
+  box-shadow:0 0 0 100vmax color-mix(in srgb,var(--c) 5%,transparent);
   clip-path:inset(0 -100vmax)}
-section:nth-of-type(even){background:color-mix(in srgb,var(--c) 5%,transparent);
-  box-shadow:0 0 0 100vmax color-mix(in srgb,var(--c) 5%,transparent)}
+section:nth-of-type(even){background:transparent;box-shadow:none}
 .shead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
 .num{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;color:#fff;
   background:var(--c);padding:6px 13px;border-radius:20px;align-self:center}
@@ -99,8 +98,8 @@ strong{font-weight:600}
 /* ── cards ── */
 .row{display:grid;gap:18px;grid-template-columns:1fr;margin-top:30px}
 @media(min-width:720px){.row{grid-template-columns:repeat(3,1fr)}}
-.card{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:24px;
-  border-top:5px solid var(--c);transition:transform .2s}
+.card{background:var(--card);border:none;border-radius:16px;padding:24px;
+  border-top:5px solid var(--c);box-shadow:0 1px 3px rgba(20,24,31,.06);transition:transform .2s}
 .card:hover{transform:translateY(-4px)}
 .brand{height:62px;width:auto;display:block;margin-bottom:6px}
 .brand.gh{height:38px;margin:22px 0 -6px}
@@ -144,8 +143,8 @@ strong{font-weight:600}
 .shot:hover{transform:rotate(0) scale(1.015)}
 
 footer{border-top:4px solid var(--green);padding:44px 0 76px;
-  background:color-mix(in srgb,var(--green) 9%,transparent);
-  box-shadow:0 0 0 100vmax color-mix(in srgb,var(--green) 9%,transparent);clip-path:inset(0 -100vmax)}
+  background:color-mix(in srgb,var(--green) 5%,transparent);
+  box-shadow:0 0 0 100vmax color-mix(in srgb,var(--green) 5%,transparent);clip-path:inset(0 -100vmax)}
 footer .big{font-family:var(--display);font-size:clamp(30px,5vw,52px);font-weight:800;
   letter-spacing:-.04em;margin-bottom:20px}
 footer .r{font-family:var(--mono);font-size:14px;line-height:2.1;color:var(--ink-2)}
