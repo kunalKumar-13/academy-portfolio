@@ -95,6 +95,10 @@ strong{font-weight:600}
 .card{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:24px;
   border-top:5px solid var(--c);transition:transform .2s}
 .card:hover{transform:translateY(-4px)}
+.brand{height:62px;width:auto;display:block;margin-bottom:6px}
+.brand.gh{height:38px;margin:22px 0 -6px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .brand{background:#fff;padding:7px 10px;border-radius:8px}}
+:root[data-theme="dark"] .brand{background:#fff;padding:7px 10px;border-radius:8px}
 .card .big{font-family:var(--display);font-size:34px;font-weight:800;color:var(--c);
   letter-spacing:-.04em;line-height:1}
 .card h3{font-size:19px;margin:12px 0 8px}
@@ -209,7 +213,7 @@ footer .r{font-family:var(--mono);font-size:14px;line-height:2.1;color:var(--ink
   <div class="shead"><span class="num">03</span><h2>What I am chasing</h2></div>
   <p class="sub">One question sits under everything I build: <strong>when a capable model proposes something, what is allowed to believe it?</strong></p>
   <div class="row">
-    <div class="card" style="--c:var(--plum)"><div class="big">MATS</div><h3>Round 2</h3><p>AI safety. Accuracy is measured afterwards; what makes a system safe is structural.</p></div>
+    <div class="card" style="--c:var(--plum)"><img class="brand" src="img/mats-logo.png" alt="MATS"><h3>Round 2</h3><p>AI safety. Accuracy is measured afterwards; what makes a system safe is structural.</p></div>
     <div class="card" style="--c:var(--green)"><div class="big">1 of 15</div><h3>Activate AI Fellow</h3><p>India's first cohort, from over 500 applicants.</p></div>
     <div class="card" style="--c:var(--ochre)"><div class="big">&#8377;0.00</div><h3>Wrongly posted</h3><p>ATTEST, across 500 settlements it had never seen. 82.4% correctly refused.</p></div>
   </div>
@@ -217,6 +221,7 @@ footer .r{font-family:var(--mono);font-size:14px;line-height:2.1;color:var(--ink
 
 <section style="--c:var(--green)">
   <div class="shead"><span class="num">04</span><h2>Strangers grade my code</h2></div>
+  <img class="brand gh" src="img/github-logo.png" alt="GitHub">
   <p class="sub">The only work I could not grade in my own favour. <strong>29 patches merged, 10 maintainers, four languages.</strong></p>
   <div class="orgs">
     <div class="org"><span class="c">8</span><span class="n">sugarlabs/musicblocks</span><span class="d">A music-and-programming microworld for children</span></div>
